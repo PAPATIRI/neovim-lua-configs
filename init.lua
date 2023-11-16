@@ -2,9 +2,11 @@ require("config.options")
 require("config.mappings")
 require("config.plugins")
 -- colorscheme config
-local themeStatus, kanagawa = pcall(require, "kanagawa")
-if themeStatus then
-  vim.cmd("colorscheme kanagawa")
+-- local kanagawaStatus, kanagawa = pcall(require, "kanagawa")
+local tokyoStatus, tokyonight = pcall(require, "tokyonight")
+
+if tokyoStatus then
+	vim.cmd("colorscheme tokyonight")
 else
-  return
+	return
 end
