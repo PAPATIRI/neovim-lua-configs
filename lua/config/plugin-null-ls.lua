@@ -8,10 +8,12 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local fmt = nls.builtins.formatting
 local dgn = nls.builtins.diagnostics
 local cda = nls.builtins.code_actions
+local utils = require("null-ls.utils")
 
 nls.setup({
+	root_dir = utils.root_pattern("composer.json", "package.json", "Makefile", ".git"),
+	diagnostics_format = "#{m} (#{c}) [#{s}]",
 	sources = {
-
 		-- Formatting
 		fmt.prettierd,
 		fmt.eslint_d,
@@ -20,6 +22,7 @@ nls.setup({
 		}),
 		fmt.stylua,
 		fmt.rustfmt,
+		fmt.phpcsfixer,
 
 		-- Diagnostics
 		dgn.eslint_d,
