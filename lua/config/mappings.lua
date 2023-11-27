@@ -1,26 +1,26 @@
 --function untuk memperpendek membuat keymap
 function map(mode, lhs, rhs)
-  vim.keymap.set(mode, lhs, rhs, {silent = true})
-end 
+	vim.keymap.set(mode, lhs, rhs, { silent = true })
+end
 
-vim.g.mapleader=","
+vim.g.mapleader = ","
 -- map leader+w to save current file
-map('n', '<leader>w', ':w<CR>')
-map('n', '<leader>s', ':so %<CR>')
-map('i', 'jj', '<ESC>')
-map('i', 'jk', '<ESC>')
+map("n", "<leader>w", ":w<CR>")
+map("n", "<leader>s", ":so %<CR>")
+map("i", "jj", "<ESC>")
+map("i", "jk", "<ESC>")
 
 -- telescope
 local status, telescope = pcall(require, "telescope.builtin")
 if status then
-  map("n", "<leader>ff", telescope.find_files)
-  map("n", "<leader>fg", telescope.live_grep)
-  map("n", "<leader>fb", telescope.buffers)
-  map("n", "<leader>fh", telescope.help_tags)
-  map("n", "<leader>fs", telescope.git_status)
-  map("n", "<leader>fc", telescope.git_commits)
+	map("n", "<leader>ff", telescope.find_files)
+	map("n", "<leader>fg", telescope.live_grep)
+	map("n", "<leader>fb", telescope.buffers)
+	map("n", "<leader>fh", telescope.help_tags)
+	map("n", "<leader>fs", telescope.git_status)
+	map("n", "<leader>fc", telescope.git_commits)
 else
-  print("Telescope not found")
+	print("Telescope not found")
 end
 
 -- neo tree
@@ -55,3 +55,7 @@ map("x", "K", ":move '<-2<CR>gv-gv", opts)
 -- Keep search matches in the middle of the window
 map("n", "n", "nzzzv", opts)
 map("n", "N", "Nzzzv", opts)
+
+-- mapping format for php file
+map("n", "<leader>5", "<cmd>!php-cs-fixer --rules=@Symfony --using-cache=no fix %<CR>")
+map("n", "<leader>5", "<cmd>!php-cs-fixer --rules=@PSR12 --using-cache=no fix %<CR>")

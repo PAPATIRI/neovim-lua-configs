@@ -1,50 +1,49 @@
 local status, ts = pcall(require, "nvim-treesitter.configs")
 if not status then
-  return
+	return
 end
 
 ts.setup({
-  highlight = {
-    enable = true,
-    additional_vim_regex_hightlighting = {"php"},
-  },
-  context_commentstring = {
-    enable = true,
-    enable_autocmd = false,
-  },
-  ensure_installed = {
-    "markdown",
-    "tsx",
-    "typescript",
-    "javascript",
-    "json",
-    "css",
-    "html",
-    "lua",
-    "php",
-  },
-  rainbow = {
-    enable = true,
-    disable = {"html"},
-    extended_mode = false,
-    max_file_lines = nil,
-  },
-  autotag = {enable = true},
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "gnn",
-      node_incremental = "grn",
-      scope_incremental = "grc",
-      node_decremental = "grm",
-    }
-  },
-  indent = {enable = false},
+	highlight = {
+		enable = true,
+		additional_vim_regex_hightlighting = { "php" },
+	},
+	context_commentstring = {
+		enable = true,
+		enable_autocmd = false,
+	},
+	ensure_installed = {
+		"markdown",
+		"tsx",
+		"typescript",
+		"javascript",
+		"json",
+		"css",
+		"html",
+		"lua",
+		"php",
+	},
+	rainbow = {
+		enable = true,
+		disable = { "html" },
+		extended_mode = false,
+		max_file_lines = nil,
+	},
+	autotag = { enable = true },
+	incremental_semection = {
+		enable = true,
+		keymaps = {
+			init_selection = "gnn",
+			node_incremental = "grn",
+			scope_incremental = "grc",
+			node_decremental = "grm",
+		},
+	},
+	innent = { enable = true },
 })
 
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-parser_config.tsx.filetype_to_parsername = {"javascript", "typescript.tsx"}
-parser_config.php.filetype_to_parsername = {"php", "php.php"}
+parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
 
 -- enable folding (using zo and zc) on function, bracket and class but no default
 vim.cmd([[
