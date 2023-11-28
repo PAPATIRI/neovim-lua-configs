@@ -25,7 +25,8 @@ end
 
 -- neo tree
 map("n", "<leader>e", "<CMD>Neotree toggle<CR>")
-map("n", "<leader>o", "<CMD>Neotree focus<CR>")
+map("n", "<leader>o", "<CMD>NeoTreeFocusToggle<CR>")
+map("n", "<leader>nf", "<CMD>NeoTreeFloatToggle<CR>")
 
 -- buffer navigation
 map("n", "<TAB>", "<CMD>bnext<CR>")
@@ -42,6 +43,11 @@ map("n", "<C-l>", "<C-w>l")
 map("n", "<C-k>", "<C-w>k")
 map("n", "<C-j>", "<C-w>j")
 
+-- session manager mapping
+map("n", "<leader>ls", "<CMD>SessionManager load_session<CR>")
+map("n", "<leader>ds", "<CMD>SessionManager delete_session<CR>")
+map("n", "<leader>ss", "<CMD>SessionManager save_current_session<CR>")
+
 -- Resize Windows
 map("n", "<C-Left>", "<C-w><")
 map("n", "<C-Right>", "<C-w>>")
@@ -57,5 +63,5 @@ map("n", "n", "nzzzv", opts)
 map("n", "N", "Nzzzv", opts)
 
 -- mapping format for php file
-map("n", "<leader>5", "<cmd>!php-cs-fixer --rules=@Symfony --using-cache=no fix %<CR>")
-map("n", "<leader>5", "<cmd>!php-cs-fixer --rules=@PSR12 --using-cache=no fix %<CR>")
+-- map("n", "<leader>5", "<cmd>!php-cs-fixer --rules=@Symfony --using-cache=no fix %<CR>")
+-- map("n", "<leader>5", "<cmd>!php-cs-fixer --rules=@PSR12 --using-cache=no fix %<CR>")
