@@ -15,11 +15,9 @@ nls.setup({
 	diagnostics_format = "#{m} (#{c}) [#{s}]",
 	sources = {
 		-- Formatting
-		fmt.prettierd,
+		-- fmt.prettierd,
 		fmt.eslint_d,
-		fmt.prettier.with({
-			filetypes = { "html", "json", "yaml", "markdown", "javascript", "typescript", "css", "scss" },
-		}),
+		fmt.prettier,
 		fmt.stylua,
 		fmt.rustfmt,
 		fmt.phpcsfixer,
