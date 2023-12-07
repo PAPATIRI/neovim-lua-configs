@@ -15,7 +15,7 @@ nls.setup({
 	diagnostics_format = "#{m} (#{c}) [#{s}]",
 	sources = {
 		-- Formatting
-		-- fmt.prettierd,
+		fmt.prettierd,
 		fmt.eslint_d,
 		fmt.prettier,
 		fmt.stylua,
@@ -40,7 +40,7 @@ nls.setup({
 				group = augroup,
 				buffer = bufnr,
 				callback = function()
-					vim.lsp.buf.format({ bufnr = bufnr })
+					vim.lsp.buf.format({ bufnr = bufnr, async = true })
 				end,
 			})
 		end
