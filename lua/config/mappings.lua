@@ -23,6 +23,47 @@ else
 	print("Telescope not found")
 end
 
+local status, flash = pcall(require, "flash")
+if status then
+	-- flash navigation
+	map("n", "s", function()
+		require("flash").jump()
+	end)
+	map("x", "s", function()
+		require("flash").jump()
+	end)
+	map("o", "s", function()
+		require("flash").jump()
+	end)
+
+	map("n", "S", function()
+		require("flash").treesitter()
+	end)
+	map("x", "S", function()
+		require("flash").treesitter()
+	end)
+	map("o", "S", function()
+		require("flash").treesitter()
+	end)
+
+	map("o", "r", function()
+		require("flash").remote()
+	end)
+
+	map("x", "R", function()
+		require("flash").treesitter_search()
+	end)
+	map("o", "R", function()
+		require("flash").treesitter_search()
+	end)
+
+	map("c", "<c-s>", function()
+		require("flash").toggle()
+	end)
+else
+	print("flash not found")
+end
+
 -- neo tree
 map("n", "<leader>e", "<CMD>Neotree toggle<CR>")
 map("n", "<leader>o", "<CMD>NeoTreeFocusToggle<CR>")
@@ -31,7 +72,7 @@ map("n", "<leader>nf", "<CMD>NeoTreeFloatToggle<CR>")
 -- buffer navigation
 map("n", "<TAB>", "<CMD>bnext<CR>")
 map("n", "<S-TAB>", "<CMD>bprevious<CR>")
-map("n", "bd", "<CMD>bdelete<CR>")
+map("n", "db", "<CMD>bdelete<CR>")
 
 -- terminal toggleterm
 map("n", "<leader>th", "<CMD>ToggleTerm size=10 direction=horizontal<CR>")

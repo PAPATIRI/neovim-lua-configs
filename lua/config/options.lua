@@ -26,8 +26,8 @@ local options = {
 	showmode = false, -- hide status like --INSERT--
 	undofile = true, -- enable persistent undo
 	signcolumn = "yes", -- always show the sign column , otherwise it would shift the text each time
-	scrolloff = 8,
-	sidescrolloff = 8,
+	scrolloff = 4,
+	-- sidescrolloff = 8,
 }
 
 vim.opt.shortmess:append("c")

@@ -11,6 +11,9 @@ return require("packer").startup(function(use)
 	use("nvim-tree/nvim-web-devicons") -- icons
 	use("rebelot/kanagawa.nvim") -- colorscheme
 	use("folke/tokyonight.nvim") --colorscheme
+	use("marko-cerovac/material.nvim") -- colorscheme
+	use("EdenEast/nightfox.nvim") -- colorscheme
+	use("navarasu/onedark.nvim") --colorscheme
 
 	use({ -- statusline
 		"nvim-lualine/lualine.nvim",
@@ -19,6 +22,10 @@ return require("packer").startup(function(use)
 			require("config.plugin-lualine")
 		end,
 		requires = { "nvim-web-devicons" },
+	})
+
+	use({ -- flash navigate on window
+		"folke/flash.nvim",
 	})
 
 	use({ -- telescope
@@ -120,6 +127,19 @@ return require("packer").startup(function(use)
 			require("session_manager").setup({
 				autoload_mode = require("session_manager.config").AutoloadMode.Disabled,
 			})
+		end,
+	})
+
+	use({ -- comment todo
+		"folke/todo-comments.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+		config = {},
+	})
+
+	use({ -- indent colorizer
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("config.plugin-indentblankline")
 		end,
 	})
 	--------------------------------------
