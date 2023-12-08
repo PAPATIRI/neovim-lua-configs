@@ -15,6 +15,13 @@ return require("packer").startup(function(use)
 	use("EdenEast/nightfox.nvim") -- colorscheme
 	use("navarasu/onedark.nvim") --colorscheme
 
+	use({ -- transparent bg
+		"xiyaowong/transparent.nvim",
+		config = function()
+			require("config.plugin-transparent")
+		end,
+	})
+
 	use({ -- statusline
 		"nvim-lualine/lualine.nvim",
 		event = "BufEnter",

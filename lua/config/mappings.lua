@@ -1,6 +1,6 @@
 --function untuk memperpendek membuat keymap
 local function map(mode, lhs, rhs)
-    vim.keymap.set(mode, lhs, rhs, { silent = true })
+	vim.keymap.set(mode, lhs, rhs, { silent = true })
 end
 
 vim.g.mapleader = ","
@@ -13,40 +13,41 @@ map("i", "jk", "<ESC>")
 -- telescope
 local status, telescope = pcall(require, "telescope.builtin")
 if status then
-    map("n", "<leader>ff", telescope.find_files)
-    map("n", "<leader>fg", telescope.live_grep)
-    map("n", "<leader>fb", telescope.buffers)
-    map("n", "<leader>fh", telescope.help_tags)
-    map("n", "<leader>fs", telescope.git_status)
-    map("n", "<leader>fc", telescope.git_commits)
+	map("n", "<leader>ff", telescope.find_files)
+	map("n", "<leader>fg", telescope.live_grep)
+	map("n", "<leader>fb", telescope.buffers)
+	map("n", "<leader>fh", telescope.help_tags)
+	map("n", "<leader>fs", telescope.git_status)
+	map("n", "<leader>fc", telescope.git_commits)
 else
-    print("Telescope not found")
+	print("Telescope not found")
 end
 
+-- flash mapping
 local status_flash, flash = pcall(require, "flash")
 if status_flash then
-    -- flash navigation
-    vim.keymap.set({ "n", "x", "o" }, "s", function()
-        flash.jump()
-    end, { desc = "search jump" })
+	-- flash navigation
+	vim.keymap.set({ "n", "x", "o" }, "f", function()
+		flash.jump()
+	end, { desc = "search jump" })
 
-    vim.keymap.set({ "n", "x", "o" }, "S", function()
-        flash.treesitter()
-    end, { desc = "search tressitter" })
+	vim.keymap.set({ "n", "x", "o" }, "F", function()
+		flash.treesitter()
+	end, { desc = "search tressitter" })
 
-    vim.keymap.set({ "o" }, "r", function()
-        flash.remote()
-    end, { desc = "search remote" })
+	vim.keymap.set({ "o" }, "r", function()
+		flash.remote()
+	end, { desc = "search remote" })
 
-    vim.keymap.set({ "x", "o" }, "R", function()
-        flash.treesitter_search()
-    end, { desc = "search remote" })
+	vim.keymap.set({ "x", "o" }, "R", function()
+		flash.treesitter_search()
+	end, { desc = "search remote" })
 
-    map("c", "<c-s>", function()
-        flash.toggle()
-    end)
+	map("c", "<c-s>", function()
+		flash.toggle()
+	end)
 else
-    print("flash not found")
+	print("flash not found")
 end
 
 -- neo tree
@@ -69,6 +70,9 @@ map("n", "<C-l>", "<C-w>l")
 map("n", "<C-k>", "<C-w>k")
 map("n", "<C-j>", "<C-w>j")
 
+-- transparent mapping
+map("n", "<leader>tb", "<CMD>TransparentToggle<CR>")
+
 -- session manager mapping
 map("n", "<leader>ls", "<CMD>SessionManager load_session<CR>")
 map("n", "<leader>ds", "<CMD>SessionManager delete_session<CR>")
@@ -81,12 +85,12 @@ map("n", "<C-Up>", "<C-w>+")
 map("n", "<C-Down>", "<C-w>-")
 
 -- Move line up and down with J/K
-map("x", "J", ":move '>+1<CR>gv-gv", opts)
-map("x", "K", ":move '<-2<CR>gv-gv", opts)
+map("x", "J", ":move '>+1<CR>gv-gv")
+map("x", "K", ":move '<-2<CR>gv-gv")
 
 -- Keep search matches in the middle of the window
-map("n", "n", "nzzzv", opts)
-map("n", "N", "Nzzzv", opts)
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
 
 -- mapping format for php file
 -- map("n", "<leader>5", "<cmd>!php-cs-fixer --rules=@Symfony --using-cache=no fix %<CR>")
