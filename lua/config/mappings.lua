@@ -1,6 +1,6 @@
 --function untuk memperpendek membuat keymap
-function map(mode, lhs, rhs)
-	vim.keymap.set(mode, lhs, rhs, { silent = true })
+local function map(mode, lhs, rhs)
+    vim.keymap.set(mode, lhs, rhs, { silent = true })
 end
 
 vim.g.mapleader = ","
@@ -13,55 +13,40 @@ map("i", "jk", "<ESC>")
 -- telescope
 local status, telescope = pcall(require, "telescope.builtin")
 if status then
-	map("n", "<leader>ff", telescope.find_files)
-	map("n", "<leader>fg", telescope.live_grep)
-	map("n", "<leader>fb", telescope.buffers)
-	map("n", "<leader>fh", telescope.help_tags)
-	map("n", "<leader>fs", telescope.git_status)
-	map("n", "<leader>fc", telescope.git_commits)
+    map("n", "<leader>ff", telescope.find_files)
+    map("n", "<leader>fg", telescope.live_grep)
+    map("n", "<leader>fb", telescope.buffers)
+    map("n", "<leader>fh", telescope.help_tags)
+    map("n", "<leader>fs", telescope.git_status)
+    map("n", "<leader>fc", telescope.git_commits)
 else
-	print("Telescope not found")
+    print("Telescope not found")
 end
 
-local status, flash = pcall(require, "flash")
-if status then
-	-- flash navigation
-	map("n", "s", function()
-		require("flash").jump()
-	end)
-	map("x", "s", function()
-		require("flash").jump()
-	end)
-	map("o", "s", function()
-		require("flash").jump()
-	end)
+local status_flash, flash = pcall(require, "flash")
+if status_flash then
+    -- flash navigation
+    vim.keymap.set({ "n", "x", "o" }, "s", function()
+        flash.jump()
+    end, { desc = "search jump" })
 
-	map("n", "S", function()
-		require("flash").treesitter()
-	end)
-	map("x", "S", function()
-		require("flash").treesitter()
-	end)
-	map("o", "S", function()
-		require("flash").treesitter()
-	end)
+    vim.keymap.set({ "n", "x", "o" }, "S", function()
+        flash.treesitter()
+    end, { desc = "search tressitter" })
 
-	map("o", "r", function()
-		require("flash").remote()
-	end)
+    vim.keymap.set({ "o" }, "r", function()
+        flash.remote()
+    end, { desc = "search remote" })
 
-	map("x", "R", function()
-		require("flash").treesitter_search()
-	end)
-	map("o", "R", function()
-		require("flash").treesitter_search()
-	end)
+    vim.keymap.set({ "x", "o" }, "R", function()
+        flash.treesitter_search()
+    end, { desc = "search remote" })
 
-	map("c", "<c-s>", function()
-		require("flash").toggle()
-	end)
+    map("c", "<c-s>", function()
+        flash.toggle()
+    end)
 else
-	print("flash not found")
+    print("flash not found")
 end
 
 -- neo tree
